@@ -62,34 +62,7 @@ public class Database {
 		return allCompetitions;
 	}
 	
-	
-	
-	public ArrayList<Competition> getTheActualCompetitions() {
-		
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		
-		Query query = session.createNativeQuery(
-				"SELECT * FROM all_competitions", Competition.class);
-		
-		List<Competition> allList = null; 
-		ArrayList<Competition>actualElementsList=new ArrayList<Competition>();  
 
-		allList = query.getResultList();
-		for (int allListIndex=0; allListIndex<allList.size(); allListIndex++ ) {
-			Competition current=allList.get(allListIndex); 
-			if (current.getStatus()!=Status.DELETED) {
-				actualElementsList.add(current); 
-			}
-		}
-
-		session.getTransaction().commit();
-		session.close();
-		
-		return actualElementsList;
-	}
-	
-	
 	public void close() {
 		sessionFactory.close();
 	}

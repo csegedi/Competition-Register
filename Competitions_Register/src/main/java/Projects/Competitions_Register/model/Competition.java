@@ -45,9 +45,13 @@ public class Competition {
 	@Enumerated(EnumType.STRING)
 	private Round_Type round_type; 
 	
-	@Column (name="is_competition")
-	private boolean is_competition;
-
+	@Column (name="descritption")
+	private String description; 
+	
+	@Column(name="feedback")
+	private boolean feedback; 
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -112,13 +116,23 @@ public class Competition {
 		this.round_type = round_type;
 	}
 
-	public boolean isIs_competition() {
-		return is_competition;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setIs_competition(boolean is_competition) {
-		this.is_competition = is_competition;
-	} 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean isFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(boolean feedback) {
+		this.feedback = feedback;
+	}
 	
 	
+	
+
 }
