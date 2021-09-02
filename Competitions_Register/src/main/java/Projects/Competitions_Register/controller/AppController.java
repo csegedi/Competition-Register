@@ -27,8 +27,8 @@ public class AppController {
 	
 	@PostMapping ("/mainPage")
 	public String mainPage (Model model, 
-			@RequestParam (name="username") String username, 
-			@RequestParam (name="password") String password) {
+			@RequestParam (required = false, name="username") String username, 
+			@RequestParam (required = false, name="password") String password) {
 		
 		String returnPage=null; 
 		
@@ -96,15 +96,30 @@ public class AppController {
 				
 			}
 			
-			
 			else {
 				
 				returnPage="redirect:/"; 
 			}
 		}
-		
 	
 		return returnPage;
+		
+	}
+	
+	@GetMapping("/add")
+	public String add () {
+		
+		return "add.html";
+		
+	}
+	
+	@PostMapping("/insert")
+	public String insert(Model model) {
+		
+		
+		
+		
+		return "insert.html";
 		
 	}
 }

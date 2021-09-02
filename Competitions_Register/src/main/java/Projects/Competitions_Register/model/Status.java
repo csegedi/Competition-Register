@@ -2,5 +2,5 @@ package Projects.Competitions_Register.model;
 
 public enum Status {
 
-	ACTIVE, PASSIVE, DELETED, GOTCHA
+	 PASSIVE, ACTIVE, DELETED, GOTCHA
 }

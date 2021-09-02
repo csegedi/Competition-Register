@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Add new Competitions</title>
+	</head>
+	
+	<body>
+	
+		<form action="/insert" method="get">
+		
+			<p>The name of the firm: </p>
+				
+					<input type="text" name="firm">
+				
+			<p>The date of the registry: </p>
+				
+					<input type="date" name="date" >
+				
+			<p>The requested technologies: </p>
+				
+					<input type="text" name="technologies">
+				
+			<p>The level of the language: </p>
+				
+					<select name="language">
+	
+						<option th:each="language:${T(Projects.Competitions_Register.model.Language_Level).values()}" th:text="${language}" th:value="${language}"> </option>
+			
+					</select>	
+					
+			
+			<p>Which round is the actual: </p>
+				
+					<select name="round">
+	
+						<option th:each="round:${T(Projects.Competitions_Register.model.Round).values()}" th:text="${round}" th:value="${round}"> </option>
+			
+					</select>	
+				
+			<p>The type of the round: </p>
+				
+					<select name="round_type">
+	
+						<option th:each="round_type:${T(Projects.Competitions_Register.model.Round_Type).values()}" th:text="${round_type}" th:value="${round_type}"> </option>
+			
+					</select>	
+		
+			<p>Select the status:</p>
+				
+					<select name="status">
+				
+						<option th:each="status:${T(Projects.Competitions_Register.model.Status).values()}" th:text="${status}" th:value="${status}"> </option>
+			
+					</select>
+		
+			<p>Feedback: </p>
+				
+					<input type="text" name="feedback" >
+			
+			<p>Description: </p>
+				
+					<input type="text" name="description" >
+					
+			<br>
+			<br>
+			
+			<input type="submit">
+			
+		</form>
+		
+	</body>
+	
+</html>
