@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Update is completed</title>
+	</head>
+	
+	<body>
+	
+		<h3>Update is completed</h3>
+		
+			<p th:text="${info}"></p>
+	
+				<form action="/update" method="post"  >
+			
+					<p>Back to the update page:</p>
+	
+						<input type="hidden" name="id" th:value="${competition.id}"  >
+							<button type="submit">Click</button>
+
+				</form>
+				
+				<br>
+				<br>
+				
+				<form action="/mainPage" method="post"  >
+			
+					<p>Back to the main page: </p>
+	
+			 			<button type="submit">Click</button>
+			 
+				</form>
+				
+				<br>
+				<br>
+		
+				<form action="/" method="get"  >
+			
+					<p>Exit: </p>
+	
+				 		<button type="submit">Click</button>
+				 		
+				</form>
+
+	</body>
+
+</html>

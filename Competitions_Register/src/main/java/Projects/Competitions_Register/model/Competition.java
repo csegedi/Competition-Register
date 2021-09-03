@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table (name="all_competitions")
 public class Competition {
@@ -23,6 +25,7 @@ public class Competition {
 	@Column (name="firm")
 	private String firm; 
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column (name="date")
 	private Date date;
 	
@@ -45,11 +48,11 @@ public class Competition {
 	@Enumerated(EnumType.STRING)
 	private Round_Type round_type; 
 	
-	@Column (name="descritption")
-	private String description; 
-	
 	@Column(name="feedback")
-	private boolean feedback; 
+	private boolean feedback;
+	
+	@Column (name="description")
+	private String description; 
 	
 	
 	public int getId() {
@@ -132,7 +135,4 @@ public class Competition {
 		this.feedback = feedback;
 	}
 	
-	
-	
-
 }

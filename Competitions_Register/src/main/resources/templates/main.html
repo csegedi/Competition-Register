@@ -29,9 +29,10 @@
 				<th>Round of the interviews</th>
 				<th>Type of the interviews</th>
 				<th>The status of the competitions</th>
+				<th>Got Feedback? </th>
 				<th>Other descriptions</th>
 				
-					<tr th:each="list:${actuals}">
+					<tr th:each="actuals:${list}">
 					
 						<td th:text="${actuals.firm}"  ></td>
 						<td th:text="${actuals.date}"  ></td>
@@ -40,6 +41,7 @@
 						<td th:text="${actuals.round}" ></td>
 						<td th:text="${actuals.round_type}"></td>
 						<td th:text="${actuals.status}"></td>
+						<td th:text="${actuals.feedback}"></td>
 						<td th:text="${actuals.description}"></td>
 					
 					</tr>
@@ -51,42 +53,72 @@
 			
 		<h3 style="text-align:center">Statistics:</h3>
 		
-			<br>
-			<br>
+				<br>
+				<br>
 			
-			<p>The number of all competitions:</p>
-				<p th:text="${allCounter}" ></p>
-			<br>
+					<h4>The number of all competitions:</h4>
+						<p th:text="${allCounter}" ></p>
+				<br>
 			
-			<p>Number of all feedbacks:</p>
-				<p th:text="${feedbackCounter}" ></p>
-			<br>
+					<h4>Number of all feedbacks:</h4>
+						<p th:text="${feedbackCounter}" ></p>
+				<br>
 			
-			<p>All Competition-all feedbacks ratio:</p>
-				<p th:text="${feedbackCounter}" ></p>
-			<br>
+					<h4>All Competition-all feedbacks ratio:</h4>
+						<p th:text="${feedbackRatio}" ></p>
+				<br>
 			
-			<p>The number of the actual competitions:</p>
-				<p th:text="${actualCounter}"  ></p>
+					<h4>The number of the actual competitions:</h4>
+						<p th:text="${actualCounter}"  ></p>
+				
+				<br>
+				
+					<h4>The number of the actual and active competitions:</h4>
+						<p th:text="${activeCounter}"  ></p>
 				
 			<br>
-				
-			<p>The number of the actual competitions:</p>
-				<p th:text="${activeCounter}"  ></p>
-				
-			<br>
 			<br>
 			
-			<form >
+				<form action="/add" method="post" >
 				
 					<p>Click here, if you want to add new competition to the database:</p>
-						<button type="button" th:onclick="|window.location.href='/add'|"> Click</button>
+						<button type="submit"> Click</button>
 				
 				</form>
+			
+			<br>
+				
+				<form action="/update" method="post" >
+				
+					<p>Select a competition to change its date: </p>
+						<select name="id">
 					
+							<option th:each="actuals:${list}" th:value="${actuals.id}" th:text="${actuals.firm}"  >
+						
+						
+							</option>
 					
-		
+						</select>
+						
+								<br>
+								<br>
+						
+									<button type="submit">Click</button>
+			
+				</form>
+				
+				
+			<br>
+			<br>
+			
+				<form action="/" method="get"  >
+			
+					<p>Exit: </p>
 	
+				 		<button type="submit">Click</button>
+				 		
+				</form>
+		
 	</body>
 	
 </html>

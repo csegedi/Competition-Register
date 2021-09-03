@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Update</title>
+	</head>
+	
+	<body>
+	
+		<h3>The variable data:</h3>
+		
+			<p>The actual round: </p>
+				<p th:text="${competition.round}" ></p>
+				
+					<form action="/update/completed" method="post" >
+				
+						<select name="round">
+	
+							<option th:each="round:${T(Projects.Competitions_Register.model.Round).values()}" th:text="${round}" th:value="${round}"> </option>
+			
+						</select>	
+					
+							<br>
+							
+								<button type="submit">Click</button>
+								
+									<br>
+					
+					</form>
+			
+			<p>The actual type of the round: </p>				
+				<p th:text="${competition.round_type}"></p>
+				
+					<form action="/update/completed" method="post" >
+					
+						<select name="round_type">
+	
+							<option th:each="round_type:${T(Projects.Competitions_Register.model.Round_Type).values()}" th:text="${round_type}" th:value="${round_type}"> </option>
+			
+						</select>	
+					
+							<br>
+								
+								<button type="submit">Click</button>
+								
+									<br>
+					
+					</form>
+					
+			<p>The actual state of the competition's status: </p>	
+				<p th:text="${competition.status}"></p>
+				
+					<form action="/update/completed" method="post" >
+					
+						<select name="status">
+				
+							<option th:each="status:${T(Projects.Competitions_Register.model.Status).values()}" th:text="${status}" th:value="${status}"> </option>
+			
+						</select>
+					
+							<br>
+							
+								<button type="submit">Click</button>
+								
+									<br>
+					
+					</form>
+					
+			<p>The actual state of feedbacks: </p>
+				<p th:text="${competition.feedback}" ></p>
+				
+					<form action="/update/completed" method="post"  >
+				
+						<input type="number" name="feedback" >
+					
+							<br>
+						
+								<button type="submit">Click</button>
+								
+									<br>
+					
+					</form>
+					
+			
+			<p>Actual informations about the jobs: </p>
+			
+				<p th:text="${competition.description}" ></p>
+				
+					<form action="/update/completed" method="post" >
+					
+						<input type="text" name="description" >
+						
+							<br>
+						
+								<button type="submit">Click</button>
+								
+									<br>
+					
+					</form>
+					
+			<br>
+			<br>
+			
+			<form action="/mainPage" method="post"  >
+			
+				<p>Back to the main page:</p>
+				
+					<button type="submit">Click</button>
+					
+			</form>
+
+	</body>
+	
+</html>
