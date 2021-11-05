@@ -72,11 +72,13 @@ public class AppController {
 		
 		if (username!=null && password!=null) {
 			 user=new User (username, password); 
-			 users.add(user); 
+			
 		}
+		
 		else {
+			
 			user=new User (cookie_name, cookie_password); 
-			users.add(user); 
+		 
 		}
 		
 		
@@ -84,6 +86,7 @@ public class AppController {
 			
 			if ( (user.getUsername().equals(users.get(usersIndex).getUsername())) && 
 					(user.getPassword().equals(users.get(usersIndex).getPassword())) ) {
+				
 				
 				
 				allCompetitions=db.getAllCompetition(); 
@@ -109,7 +112,6 @@ public class AppController {
 				
 				actualCounter=actualCompetitions.size(); 
 				feedback_Ratio= allFeedbackCounter/allSize; 
-				System.out.println (feedback_Ratio); 
 			
 				model.addAttribute("allCounter", allSize);
 				model.addAttribute("feedbackCounter",allFeedbackCounter ); 
