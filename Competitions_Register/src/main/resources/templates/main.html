@@ -1,124 +1,86 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>main Page</title>
-		
-			<style>
-			table, th, td {
-			border: 2px solid black;
-			border-collapse:collapse;
-			}
-			</style>
-	
-	</head>
+<html class="background">
 
-	<body>
-	
-		<h3 style="text-align:center"  >Here are the actual competitions:</h3>
+<head>
+	<meta charset="UTF-8">
+	<title>main Page</title>
+	<link rel="stylesheet" href="css/style.css" >
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<h4>Here are the actual competitions:</h4>
+	<br>
+	<div class="table">
+		<table>
+			<th>The name of the firm</th>
+			<th>The date of submit</th>
+			<th>Requested technologies</th>
+			<th>command of a language (level)</th>
+			<th>Round of the interviews</th>
+			<th>Type of the interviews</th>
+			<th>The status of the competitions</th>
+			<th>Got Feedback? </th>
+			<th>Other descriptions</th>
 		
-			<br>
-			<br>
-		
-			<table>
-			
-				<th>The name of the firm</th>
-				<th>The date of submit</th>
-				<th>Requested technologies</th>
-				<th>command of a language (level)</th>
-				<th>Round of the interviews</th>
-				<th>Type of the interviews</th>
-				<th>The status of the competitions</th>
-				<th>Got Feedback? </th>
-				<th>Other descriptions</th>
-				
-					<tr th:each="actuals:${list}">
-					
-						<td th:text="${actuals.firm}"  ></td>
-						<td th:text="${actuals.date}"  ></td>
-						<td th:text="${actuals.technologies}"></td>
-						<td th:text="${actuals.language}"></td>
-						<td th:text="${actuals.round}" ></td>
-						<td th:text="${actuals.round_type}"></td>
-						<td th:text="${actuals.status}"></td>
-						<td th:text="${actuals.feedback}"></td>
-						<td th:text="${actuals.description}"></td>
-					
-					</tr>
-		
-			</table>
-			
-			<br>
-			<br>
-			
-		<h3 style="text-align:center">Statistics:</h3>
-		
-				<br>
-				<br>
-			
-					<h4>The number of all competitions:</h4>
-						<p th:text="${allCounter}" ></p>
-				<br>
-			
-					<h4>Number of all feedbacks:</h4>
-						<p th:text="${feedbackCounter}" ></p>
-				<br>
-			
-					<h4>All Competition-all feedbacks ratio:</h4>
-						<p th:text="${feedbackRatio}" ></p>
-				<br>
-			
-					<h4>The number of the actual competitions:</h4>
-						<p th:text="${actualCounter}"  ></p>
-				
-				<br>
-				
-					<h4>The number of the actual and active competitions:</h4>
-						<p th:text="${activeCounter}"  ></p>
-				
-			<br>
-			<br>
-			
-				<form action="/add" method="post" >
-				
-					<p>Click here, if you want to add new competition to the database:</p>
-						<button type="submit"> Click</button>
-				
-				</form>
-			
-			<br>
-				
-				<form action="/update" method="post" >
-				
-					<p>Select a competition to change its date: </p>
-						<select name="id">
-					
-							<option th:each="actuals:${list}" th:value="${actuals.id}" th:text="${actuals.firm}"  >
-						
-						
-							</option>
-					
-						</select>
-						
-								<br>
-								<br>
-						
-									<button type="submit">Click</button>
-			
-				</form>
-				
-				
-			<br>
-			<br>
-			
-				<form action="/" method="get"  >
-			
-					<p>Exit: </p>
-	
-				 		<button type="submit">Click</button>
-				 		
-				</form>
-		
-	</body>
+			<tr th:each="actuals:${list}">
+				<td th:text="${actuals.firm}"  ></td>
+				<td th:text="${actuals.date}"  ></td>
+				<td th:text="${actuals.technologies}"></td>
+				<td th:text="${actuals.language}"></td>
+				<td th:text="${actuals.round}" ></td>
+				<td th:text="${actuals.round_type}"></td>
+				<td th:text="${actuals.status}"></td>
+				<td th:text="${actuals.feedback}"></td>
+				<td th:text="${actuals.description}"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="register" id="stat">
+		<h4 >Statistics:</h4>
+		<br>
+		<h5>The number of all competitions:</h5>
+		<p th:text="${allCounter}" ></p>
+		<br>
+		<h5>Number of all feedbacks:</h5>
+		<p th:text="${feedbackCounter}" ></p>
+		<br>
+		<h5>All Competition-all feedbacks ratio:</h5>
+		<p th:text="${feedbackRatio}" ></p>
+		<br>
+		<h5>The number of the actual competitions:</h5>
+		<p th:text="${actualCounter}"  ></p>
+		<br>
+		<h5>The number of the actual and active competitions:</h5>
+		<p th:text="${activeCounter}"  ></p>
+		<br>
+		<br>
+	</div>
+	<br>
+	<div class="register" id="smallBox">
+	<form action="/add" method="post" >
+		<h4>Click here, if you want to add new competition to the database:</h4>
+			<button class="button" type="submit"> Click</button>
+	</form>
+	</div>
+	<br>
+	<div class="register" id="smallBox">
+	<form action="/update" method="post" >
+	<h4>Select a competition to change its date: </h4>
+	<select name="id">
+		<option th:each="actuals:${list}" th:value="${actuals.id}" th:text="${actuals.firm}"  ></option>
+	</select>
+	<br>
+	<br>	
+		<button class="button" type="submit">Click</button>
+	</form>
+	</div>
+	<br>
+	<br>
+	<form action="/" method="get"  >
+		<button class="button" type="submit">Exit</button>
+	</form>
+</body>
 	
 </html>
