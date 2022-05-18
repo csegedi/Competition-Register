@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>No data!</title>
-	</head>
-	
-	<body>
-	
-		<h2 Style="text-align:center">We are sorry, but the database is currently empty!</h2>
+<html class="background">
+
+<head>
+	<meta charset="UTF-8">
+	<title>No data!</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">	
+</head>
+
+<body>
+	<div class="exit" >
+		<form action="/" method="get" >
+			<button class="button" type="submit">Exit</button>
+		</form>	
+	</div>
+	<div class="register">
+		<h4>We are sorry, but the database is currently empty!</h4>
+		<br>
+		<br>
+		<form action="/add" method="post" >
+			<p>Click here, if you want to add new competition to the database:</p>
 			<br>
-			<br>
-				<form action="/add" method="post" >
-				
-					<p>Click here, if you want to add new competition to the database:</p>
-						<button type="submit"> Click</button>
-				
-				</form>
-				
-					<p>Click here to exit</p>
-						<br>
-							<a href="/"> <button>Exit</button> </a>
-	</body>
+			<button class="button" type="submit"> Click</button>
+		</form>
+	</div>		
+</body>
 	
 </html>

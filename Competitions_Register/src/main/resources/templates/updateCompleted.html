@@ -1,47 +1,33 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Update is completed</title>
-	</head>
+<html class="background">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Update is completed</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+</head>
 	
-	<body>
-	
+<body>
+	<div class="exit" >
+		<form action="/" method="get" >
+			<button class="button" type="submit">Exit</button>
+		</form>	
+		<br>
+		<form action="/mainPage" method="post"  >
+			<button class="button" type="submit">Back to the main</button>
+		</form>
+		<br>
+		<form action="/mainPage/update" method="post"  >
+			<button class="button" type="submit">Back</button>
+			<input type="hidden" name="id" th:value="${competition.id}"  >
+		</form>
+	</div>
+	<div class="register">
 		<h3>Update is completed</h3>
-		
-			<p th:text="${info}"></p>
-	
-				<form action="/update" method="post"  >
-			
-					<p>Back to the update page:</p>
-	
-						<input type="hidden" name="id" th:value="${competition.id}"  >
-							<button type="submit">Click</button>
-
-				</form>
-				
-				<br>
-				<br>
-				
-				<form action="/mainPage" method="post"  >
-			
-					<p>Back to the main page: </p>
-	
-			 			<button type="submit">Click</button>
-			 
-				</form>
-				
-				<br>
-				<br>
-		
-				<form action="/" method="get"  >
-			
-					<p>Exit: </p>
-	
-				 		<button type="submit">Click</button>
-				 		
-				</form>
-
-	</body>
+		<p th:text="${info}"></p>
+	</div>
+</body>
 
 </html>

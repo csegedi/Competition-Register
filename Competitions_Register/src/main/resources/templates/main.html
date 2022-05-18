@@ -4,12 +4,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title>main Page</title>
-	<link rel="stylesheet" href="css/style.css" >
+	<link rel="stylesheet" href="/css/style.css" >
 	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
+	<div class="exit">
+		<form action="/" method="get"  >
+			<button class="button" type="submit">Exit</button>
+		</form>
+	</div>
+	
 	<h4>Here are the actual competitions:</h4>
 	<br>
 	<div class="table">
@@ -37,50 +44,48 @@
 			</tr>
 		</table>
 	</div>
-	<div class="register" id="stat">
-		<h4 >Statistics:</h4>
-		<br>
-		<h5>The number of all competitions:</h5>
-		<p th:text="${allCounter}" ></p>
-		<br>
-		<h5>Number of all feedbacks:</h5>
-		<p th:text="${feedbackCounter}" ></p>
-		<br>
-		<h5>All Competition-all feedbacks ratio:</h5>
-		<p th:text="${feedbackRatio}" ></p>
-		<br>
-		<h5>The number of the actual competitions:</h5>
-		<p th:text="${actualCounter}"  ></p>
-		<br>
-		<h5>The number of the actual and active competitions:</h5>
-		<p th:text="${activeCounter}"  ></p>
-		<br>
-		<br>
-	</div>
-	<br>
-	<div class="register" id="smallBox">
-	<form action="/add" method="post" >
-		<h4>Click here, if you want to add new competition to the database:</h4>
-			<button class="button" type="submit"> Click</button>
-	</form>
-	</div>
-	<br>
-	<div class="register" id="smallBox">
-	<form action="/update" method="post" >
-	<h4>Select a competition to change its date: </h4>
-	<select name="id">
-		<option th:each="actuals:${list}" th:value="${actuals.id}" th:text="${actuals.firm}"  ></option>
-	</select>
-	<br>
-	<br>	
-		<button class="button" type="submit">Click</button>
-	</form>
-	</div>
-	<br>
-	<br>
-	<form action="/" method="get"  >
-		<button class="button" type="submit">Exit</button>
-	</form>
+	
+	<div class="container">
+		<div class="register" id="stat">
+			<h4 >Statistics:</h4>
+			<br>
+			<h5>The number of all competitions:</h5>
+			<p th:text="${allCounter}" ></p>
+			<br>
+			<h5>Number of all feedbacks:</h5>
+			<p th:text="${feedbackCounter}" ></p>
+			<br>
+			<h5>All Competition-all feedbacks ratio:</h5>
+			<p th:text="${feedbackRatio}" ></p>
+			<br>
+			<h5>The number of the actual competitions:</h5>
+			<p th:text="${actualCounter}"  ></p>
+			<br>
+			<h5>The number of the actual and active competitions:</h5>
+			<p th:text="${activeCounter}"  ></p>
+		</div>
+		
+		<div class="register" id="smallBox">
+			<form action="/mainPage/add" method="post" >
+			<h4>New competition to the database:</h4>
+				<button class="button" type="submit"> Click</button>
+			</form>
+		</div>
+		
+		<div class="register" id="smallBox">
+			<form action="/mainPage/update" method="post" >
+			<h4>Select a competition to change its date: </h4>
+				<select name="id">
+					<option th:each="actuals:${list}" th:value="${actuals.id}" th:text="${actuals.firm}"  ></option>
+				</select>
+			<br>
+			<br>	
+				<button class="button" type="submit">Click</button>
+			</form>
+		</div>
+		
+</div>
+
 </body>
 	
 </html>

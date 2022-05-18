@@ -49,11 +49,6 @@ public class AppController {
 			HttpServletResponse response
 			) {
 		
-		Cookie cookie1=new Cookie("cookie_user", username);
-		Cookie cookie2=new Cookie ("cookie_password", password); 
-		response.addCookie(cookie1); 
-		response.addCookie(cookie2); 
-		
 		String returnPage=null; 
 		
 		Database db=new Database(); 
@@ -72,6 +67,10 @@ public class AppController {
 		
 		if (username!=null && password!=null) {
 			 user=new User (username, password); 
+			 Cookie cookie1=new Cookie("cookie_user", username);
+			 Cookie cookie2=new Cookie ("cookie_password", password); 
+			 response.addCookie(cookie1); 
+			 response.addCookie(cookie2);  
 			
 		}
 		
@@ -81,13 +80,10 @@ public class AppController {
 		 
 		}
 		
-		
 		for (int usersIndex=0; usersIndex<users.size(); usersIndex++) {
 			
 			if ( (user.getUsername().equals(users.get(usersIndex).getUsername())) && 
 					(user.getPassword().equals(users.get(usersIndex).getPassword())) ) {
-				
-				
 				
 				allCompetitions=db.getAllCompetition(); 
 				double allSize=allCompetitions.size(); 
@@ -149,36 +145,44 @@ public class AppController {
 		
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/mainPage/add")
 	public String add () {
 	
 		return "add.html";
 		
 	}
 	
-	@PostMapping("/add/completed")
+	@PostMapping("/mainPage/add/completed")
 	public String insert(Model model,
-			@RequestParam (name="firm") String firm,
-			@RequestParam (name="date")@DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
-			@RequestParam (name="technologies") String technologies,
+			@RequestParam (required = false, name="firm") String firm,
+			@RequestParam (required = false, name="date")@DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
+			@RequestParam (required = false, name="technologies") String technologies,
 			@RequestParam (name="language") String language,
 			@RequestParam (name="round") String round,
 			@RequestParam (name="round_type") String round_type,
 			@RequestParam (name="status") String status,
-			@RequestParam (name="feedback") int feedback,
-			@RequestParam (name="description") String description) {
+			@RequestParam (required = false, name="feedback") Integer feedback,
+			@RequestParam (required = false, name="description") String description) {
 		
 		Database db=new Database(); 
+		String returnPage=null; 
 		
-		db.insertNewCompetition(firm, date, technologies, language, round, round_type,  status,  feedback, description  ); 
+		if ( (firm!=null) && (date!=null) && (technologies!=null) && ( (feedback!=null) && ( (feedback==0) || (feedback==1) ) ) && description!=null ) {
+			db.insertNewCompetition(firm, date, technologies, language, round, round_type,  status,  feedback, description  ); 
+			returnPage="additionCompleted.html"; 
+		}
+		else {
+			returnPage="wrongInput.html"; 
+		}
+		
 		
 		db.close(); 
 		
-		return "additionCompleted.html";
+		return returnPage;
 		
 	}
 	
-	@PostMapping ("/update")
+	@PostMapping ("/mainPage/update")
 	public String update (Model model,
 			@RequestParam (name="id") int id,
 			HttpServletResponse response) {
@@ -199,7 +203,7 @@ public class AppController {
 			
 	}
 	
-	@PostMapping("/update/completed")
+	@PostMapping("/mainPage/update/completed")
 	public String updateCompleted(Model model,
 			@CookieValue (value="id") String id,
 			@RequestParam (required =false, name="round") String round,
